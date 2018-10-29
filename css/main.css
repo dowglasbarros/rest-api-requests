@@ -58,3 +58,24 @@ section.results .results-right{
 section.results .results-right{
 
 }
+
+#api-pokemon{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#poke-name{
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #f9f90e;
+    text-shadow: 1px 0px 8px #4d66c0;
+    letter-spacing: .2rem;
+}
+#poke-picture{
+
+}
+#poke-abilities{
+    
+}
