@@ -3,7 +3,7 @@ const qsa = document.querySelectorAll.bind(document);
 
 
 // Ref para o botao de busca
-const button = qs('.button');
+const button = qs('#submit');
 button.addEventListener('click', getPokemon)
 
 function getPokemon (e) {
@@ -14,5 +14,6 @@ function getPokemon (e) {
 }
 
 function exibeInformacoesDoPokemon(data) {
-  console.log(data);
+  qs('#poke-name').innerHTML = data.name;
+  qs('#poke-picture img').src = data.sprites.front_shiny;    
 } 
