@@ -72,10 +72,33 @@ section.results .results-right{
     color: #f9f90e;
     text-shadow: 1px 0px 8px #4d66c0;
     letter-spacing: .2rem;
+    text-transform: capitalize;
 }
 #poke-picture{
 
 }
 #poke-abilities{
+
+}
+
+#poke-abilities h2{
+    font-weight: bold;
+    margin: 10px 0;
+    color: #4d66c0;
+}
+
+#poke-abilities p{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
     
+}
+#poke-abilities p:before{
+    content: "";
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: url(../image/pokebola.jpg) no-repeat center;
+    background-size: contain;
+    margin-right: 10px;
 }
