@@ -26,8 +26,12 @@ function exibeInformacoesDoPokemon(data) {
 } 
 
 function exibeHabilidades(habilidades) {
-  const listaDeHabilidades = habilidades.reduce((prev, curr) => prev.concat(`<p> ${curr.ability.name} </p>`), '');
-  habilidadesPokemon.innerHTML = listaDeHabilidades;
+  let listaDeHabilidades = habilidades.reduce((prev, curr) => prev.concat(`<p> ${curr.ability.name} </p>`), '');
+  let titulo = '<h2> Habilidades </h2>';
+  
+  listaDeHabilidades = `<div id='poke-abilities-list'> ${listaDeHabilidades} </div>`
+
+  habilidadesPokemon.innerHTML = titulo + listaDeHabilidades;
 }
 
 function limpar() {
