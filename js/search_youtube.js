@@ -1,6 +1,6 @@
 const API_KEY = "AIzaSyA23m5YJbOR0mNX2bpIXM5RxFEOgGgAYt0";
 
-const URL_BASE = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=${API_KEY}`;
+const URL_BASE = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&type=video&key=${API_KEY}`;
 
 const CALLBACK = "&callback=?"
 
@@ -14,7 +14,7 @@ document.querySelector("#submit").addEventListener("click", function(event) {
 	$.getJSON(URL, function(data){
 		data.items.forEach(item => {
 			var element = `
-				<li id=${item.id.videoId} class="videos-pokemon">
+				<li id=${item.id.videoId} class="videos-pokemon" onClick="showVideo(event.target)">
 					<h2>${item.snippet.title}</h2>
 
 					<img src=${item.snippet.thumbnails.default.url} alt=${item.snippet.title} />
@@ -26,18 +26,6 @@ document.querySelector("#submit").addEventListener("click", function(event) {
 	});
 });
 
-let videoPlaying = document.querySelector("#video-playing");
-//let URL_VIDEO = `https://www.youtube.com/embed/${videoId}`;
-
-$(".videos-pokemon").click(function(event){
-	console.log("teste: " + event.target.id);
-});
-
-
-document.getElementById("parent-list").addEventListener("click",function(e) {
-        // e.target is our targetted element.
-                    // try doing console.log(e.target.nodeName), it will result LI
-        if(e.target && e.target.nodeName == "LI") {
-            console.log(e.target.id + " was clicked");
-        }
-    });
+function showVideo(target){
+	console.log(target.parentElement.id);
+}
