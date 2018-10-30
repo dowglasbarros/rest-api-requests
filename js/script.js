@@ -37,8 +37,6 @@ function exibeHabilidades(habilidades) {
 }
 
 function validaErroPokemon(input) {
-  debugger;
-
   const {value} = input;
 
   if (value.match(/[0-9]/)) {
