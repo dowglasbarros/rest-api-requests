@@ -23,7 +23,7 @@ function getPokemon (e) {
     exibeErro();
   
   } else {
-    $.getJSON(`https://pokeapi.co/api/v2/pokemon/${inputPokemon.value}`)
+    $.getJSON(`https://pokeapi.co/api/v2/pokemon/${inputPokemon.value}/`)
       .done(function(data) {
         exibeInformacoesDoPokemon(data);
       })
