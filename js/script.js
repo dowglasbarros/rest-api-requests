@@ -37,6 +37,7 @@ function getPokemon (e) {
 
 function exibeInformacoesDoPokemon(data) {
   if (data.name) {
+    pokemonCry(data.name);
     nomePokemon.innerHTML = data.name;
     imagemPokemon.src = data.sprites.front_shiny;    
 
@@ -46,7 +47,20 @@ function exibeInformacoesDoPokemon(data) {
     limpar();
     exibeErro();
   }
-} 
+}
+
+function pokemonCry(name) {
+  if (name === 'pikachu') {
+    var audio = new Audio('cries/pikachu.wav');
+    audio.play();
+  } else if (name === 'bulbasaur') {
+    var audio = new Audio('cries/bulbasaur.wav');
+    audio.play();
+  } else if (name === 'charmander') {
+    var audio = new Audio('cries/charmander.wav');
+    audio.play();
+  }
+}
 
 function exibeHabilidades(habilidades) {
   let listaDeHabilidades = habilidades.reduce((prev, curr) => prev.concat(`<p> ${curr.ability.name} </p>`), '');
