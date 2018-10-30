@@ -32,6 +32,10 @@ section.search .search-input input{
     text-align: center;
     font-size: 1.3rem;
 }
+
+section.search .search-input input.erro{
+    border: 1px solid #f00;
+}
 section.search .searchBtn{
 	display: flex;
 	flex-direction: row;
@@ -41,7 +45,22 @@ section.search .searchBtn{
 section.search .searchBtn input{
 	width: 48%;
 	height: 40px;
+    background: #4d66bf;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+    transition: .4s linear;
 }
+
+section.search .searchBtn input:hover{
+    color: #4d66bf;
+    background: #f9f90b;
+    border: 1px solid #4d66bf;
+    transition: .4s linear;
+}
+
 section.results{
 	display: flex;
     flex-direction: column;
@@ -67,7 +86,10 @@ section.results .results-left{
     align-items: center;
 }
 #poke-name{
-    font-size: 1.8rem;
+    display: inline-flex;
+    align-items: center;
+    height: 96px;
+    font-size: 2.5rem;
     font-weight: bold;
     color: #f9f90e;
     text-shadow: 0px 0px 3px #4d66c0;
@@ -79,6 +101,8 @@ section.results .results-left{
     margin: 10px 0;
     color: #4d66c0;
     text-align: center;
+    text-align: left;
+    font-size: 1.5rem;
 }
 #poke-abilities p{
     display: flex;
@@ -90,7 +114,7 @@ section.results .results-left{
     display: inline-block;
     width: 25px;
     height: 25px;
-    background: url(../image/pokebola.jpg) no-repeat center;
+    background: url(../image/pokebola.png) no-repeat center;
     background-size: contain;
     margin-right: 10px;
 }
@@ -105,19 +129,38 @@ section.results .results-right li{
     width: 32%;
     margin-bottom: 40px;
     align-items: center;
+    background: #4d66bf;
+    color: #fff;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    transition: .4s linear;
+}
+
+section.results .results-right li:hover{
+    color: #4d66bf;
+    background: #f9f90b7a;
+    transition: .4s linear;
+}
+
+section.results .results-right li:hover h2{
+    color: #4d66bf;
+    transition: .4s linear;
 }
 
 section.results .results-right li h2{
-    color: #4d66c0;
+    color: #fff;
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
-    min-height: 50px;
+    min-height: 80px;
+    transition: .4s linear;
 }
 
 section.results .results-right li p{
     width: 80%;
     padding: 20px;
+    font-size: .8rem;
     line-height: 1.4rem;
     text-align: center;
     height: 90px;
