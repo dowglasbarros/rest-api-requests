@@ -1,26 +1,38 @@
 const qs = document.querySelector.bind(document);
 const qsa = document.querySelectorAll.bind(document);
 
-// Ref para o botao de busca
-const button = qs('#submit');
-button.addEventListener('click', getPokemon)
+const botaoSubmit = qs('#submit');
+const botaoLimpar = qs('#clear');
+const inputPokemon = qs('#pokemon');
+const nomePokemon = qs('#poke-name');
+const imagemPokemon = qs('#poke-picture img');
+const habilidadesPokemon = qs('#poke-abilities');
+
+botaoSubmit.addEventListener('click', getPokemon);
+botaoLimpar.addEventListener('click', limpar);
 
 function getPokemon (e) {
   e.preventDefault();
 
-  // valor digitado no input
-  const {value} = qs('#pokemon');
+  const {value} = inputPokemon;
   $.getJSON(`https://pokeapi.co/api/v2/pokemon/${value}`, exibeInformacoesDoPokemon);
 }
 
 function exibeInformacoesDoPokemon(data) {
-  qs('#poke-name').innerHTML = data.name;
-  qs('#poke-picture img').src = data.sprites.front_shiny;    
+  nomePokemon.innerHTML = data.name;
+  imagemPokemon.src = data.sprites.front_shiny;    
 
   exibeHabilidades(data.abilities);
 } 
 
 function exibeHabilidades(habilidades) {
-  const listaDeHabilidades = habilidades.reduce((prev, curr) => prev.concat(`<p> ${curr.ability.name} </p>`), '')
-  qs('#poke-abilities').innerHTML = listaDeHabilidades;
+  const listaDeHabilidades = habilidades.reduce((prev, curr) => prev.concat(`<p> ${curr.ability.name} </p>`), '');
+  habilidadesPokemon.innerHTML = listaDeHabilidades;
+}
+
+function limpar() {
+  inputPokemon.value = '';
+  nomePokemon.innerHTML = '';
+  imagemPokemon.src = '';
+  habilidadesPokemon.innerHTML = '';
 }
