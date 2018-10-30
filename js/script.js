@@ -13,18 +13,32 @@ botaoLimpar.addEventListener('click', limpar);
 
 function getPokemon (e) {
   e.preventDefault();
-  const {value} = inputPokemon;
 
-  if (validaErroPokemon(inputPokemon)) return;
-
-  $.getJSON(`https://pokeapi.co/api/v2/pokemon/${value}`, exibeInformacoesDoPokemon);
+  if (validaErroPokemon(inputPokemon)) {
+    exibeErro();
+  
+  } else {
+    $.getJSON(`https://pokeapi.co/api/v2/pokemon/${inputPokemon.value}`)
+      .done(function(data) {
+        exibeInformacoesDoPokemon(data);
+      })
+      .fail(function() {
+        limpar();
+        exibeErro();
+      })
+  }
 }
 
 function exibeInformacoesDoPokemon(data) {
-  nomePokemon.innerHTML = data.name;
-  imagemPokemon.src = data.sprites.front_shiny;    
+  if (data.name) {
+    nomePokemon.innerHTML = data.name;
+    imagemPokemon.src = data.sprites.front_shiny;    
 
-  exibeHabilidades(data.abilities);
+    exibeHabilidades(data.abilities);
+  } else {
+    limpar();
+    exibeErro();
+  }
 } 
 
 function exibeHabilidades(habilidades) {
@@ -47,6 +61,10 @@ function validaErroPokemon(input) {
     input.classList.remove('erro');
     return false;
   }
+}
+
+function exibeErro() {
+  nomePokemon.innerHTML = 'Pokémon inexistente';
 }
 
 function limpar() {
