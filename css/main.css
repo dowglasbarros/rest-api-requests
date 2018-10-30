@@ -110,6 +110,7 @@ section.results .results-left{
 #poke-name{
     display: inline-flex;
     align-items: center;
+    text-align: center;
     height: 96px;
     font-size: 2.5rem;
     font-weight: bold;
