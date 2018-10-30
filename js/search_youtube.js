@@ -6,9 +6,12 @@ const CALLBACK = "&callback=?"
 
 let videoId = "";
 
+let videoShowYoutube = document.querySelector("#video-show-youtube");
+
 document.querySelector("#submit").addEventListener("click", function(event) {
-	let term = document.querySelector("#pokemon").value;
-	if (validaErroPokemon(term)) return;
+	let input = document.querySelector("#pokemon");
+	let term = input.value;
+	if (validaErroPokemon(input)) return;
 	let URL = `${URL_BASE}&q=${term}`;
 	document.querySelector("#list-videos").innerHTML = "";
 	let listVideos = document.querySelector("#list-videos");
@@ -27,6 +30,16 @@ document.querySelector("#submit").addEventListener("click", function(event) {
 	});
 });
 
+
 function showVideo(target){
+	let iframeVideo = `
+		<div className="embed-responsive embed-responsive-16by9">
+			<iframe src={url} className="embed-responsive-item"></iframe>
+		</div>
+		<div className="details">
+			<div>{video.snippet.title}</div>
+			<div>{video.snippet.description}</div>
+		</div>
+	`;
 	console.log(target.parentElement.id);
 }
