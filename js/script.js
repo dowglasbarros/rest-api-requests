@@ -90,9 +90,11 @@ function youtubeRequest(){
   if (validaErroPokemon(input)) return;
   let URL = `${URL_YOUTUBE}&q=${term}`;
   $.getJSON(URL, function(data){
+    let lis;
     data.items.forEach(item => {
-      listVideos.insertAdjacentHTML('beforeend', createVideoList(item));
+      lis += createVideoList(item);
     });
+    listVideos.innerHTML = lis;
     let li = listVideos.getElementsByTagName("li")[0];
     showVideo(li);
   });
