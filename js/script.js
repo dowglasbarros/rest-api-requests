@@ -139,11 +139,13 @@ function showVideo(li){
 function createYoutubeVideo(url, title, description){
   return `
     <div class="embed-responsive">
-      <iframe src=${url} class="embed-responsive-item"></iframe>
-    </div>
-    <div class="details">
-      <h2>${title}</h2>
-      <p>${description}</p>
+      <div class="iframe-container">
+        <iframe src=${url} class="embed-responsive-item"></iframe>
+      </div>
+      <div class="details">
+        <h2>${title}</h2>
+        <p>${description}</p>
+      </div>
     </div>
   `;
 }
