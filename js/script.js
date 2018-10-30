@@ -20,6 +20,7 @@ function getPokemon (e) {
   e.preventDefault();
 
   if (validaErroPokemon(inputPokemon)) {
+    limpar();
     exibeErro();
   
   } else {
@@ -59,7 +60,7 @@ function exibeHabilidades(habilidades) {
 function validaErroPokemon(input) {
   const {value} = input;
 
-  if (value.match(/[0-9]/)) {
+  if (value.match(/[0-9]/) || !value.length) {
     input.classList.add('erro');
     return true;
   
@@ -70,7 +71,7 @@ function validaErroPokemon(input) {
 }
 
 function exibeErro() {
-  nomePokemon.innerHTML = 'Pokémon inexistente';
+  nomePokemon.innerHTML = 'Digite o nome de um Pokémon válido';
 }
 
 function limpar() {
