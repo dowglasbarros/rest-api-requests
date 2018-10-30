@@ -79,6 +79,28 @@ section.results .results-left{
     flex-direction: column;
     width: 60%;
 }
+#video-show-youtube{
+    display: inline-flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+#video-show-youtube iframe{
+    width: 400px;
+    height: 300px;
+}
+#video-show-youtube .details{
+    margin-top: 30px;
+    width: 80%;
+    text-align: center;
+    font-size: .8rem;
+}
+#api-youtube{
+    display: inline-flex;
+    width: 50%;
+}
 #api-pokemon{
     display: flex;
     flex-direction: row;
@@ -120,8 +142,8 @@ section.results .results-left{
 }
 section.results .results-right{
     flex-direction: row;
-    width: 90%;
-    padding: 60px;
+    width: 100%;
+    padding: 20px;
 }
 section.results .results-right li{
     display: inline-flex;
@@ -134,6 +156,7 @@ section.results .results-right li{
     padding: 20px 10px;
     box-sizing: border-box;
     border-radius: 20px;
+    cursor: pointer;
     transition: .4s linear;
 }
 
@@ -153,11 +176,12 @@ section.results .results-right li h2{
     font-weight: bold;
     margin-bottom: 10px;
     text-align: center;
-    min-height: 80px;
+    min-height: 100px;
     transition: .4s linear;
 }
 
 section.results .results-right li p{
+    display: none;
     width: 80%;
     padding: 20px;
     font-size: .8rem;
