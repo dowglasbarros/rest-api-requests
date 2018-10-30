@@ -4,8 +4,6 @@ const URL_BASE = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxR
 
 const CALLBACK = "&callback=?"
 
-let videoId = "";
-
 let videoShowYoutube = document.querySelector("#video-show-youtube");
 
 document.querySelector("#submit").addEventListener("click", function(event) {
@@ -17,29 +15,36 @@ document.querySelector("#submit").addEventListener("click", function(event) {
 	let listVideos = document.querySelector("#list-videos");
 	$.getJSON(URL, function(data){
 		data.items.forEach(item => {
-			var element = `
-				<li id=${item.id.videoId} class="videos-pokemon" onClick="showVideo(event.target)">
-					<h2>${item.snippet.title}</h2>
+			let lis = `
+				<li id=${item.id.videoId} class="videos-pokemon" onClick="showVideo(event.target.parentElement)">
+					<h2 class="video-title">${item.snippet.title}</h2>
 
 					<img src=${item.snippet.thumbnails.default.url} alt=${item.snippet.title} />
-					<p>${item.snippet.description}</p>
+					<p class="video-description">${item.snippet.description}</p>
 				</li>
 			`;
-			listVideos.insertAdjacentHTML('beforeend', element);
+			listVideos.insertAdjacentHTML('beforeend', lis);
 		});
+		let li = document.querySelector("#list-videos").getElementsByTagName("li")[0];
+		showVideo(li);
 	});
 });
 
 
-function showVideo(target){
+function showVideo(li){
+	let title = li.querySelector(".video-title").textContent;
+	let description = li.querySelector(".video-description").textContent;
+	const videoId = li.id;
+	const url = `https://www.youtube.com/embed/${videoId}`;
+	let videoShowYoutube = document.querySelector("#video-show-youtube");
 	let iframeVideo = `
-		<div className="embed-responsive embed-responsive-16by9">
-			<iframe src={url} className="embed-responsive-item"></iframe>
+		<div className="embed-responsive">
+			<iframe src=${url} className="embed-responsive-item"></iframe>
 		</div>
 		<div className="details">
-			<div>{video.snippet.title}</div>
-			<div>{video.snippet.description}</div>
+			<h2>${title}</h2>
+			<p>${description}</p>
 		</div>
 	`;
-	console.log(target.parentElement.id);
+	videoShowYoutube.innerHTML = iframeVideo;
 }
