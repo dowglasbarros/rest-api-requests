@@ -13,8 +13,10 @@ botaoLimpar.addEventListener('click', limpar);
 
 function getPokemon (e) {
   e.preventDefault();
-
   const {value} = inputPokemon;
+
+  if (validaErroPokemon(inputPokemon)) return;
+
   $.getJSON(`https://pokeapi.co/api/v2/pokemon/${value}`, exibeInformacoesDoPokemon);
 }
 
@@ -32,6 +34,21 @@ function exibeHabilidades(habilidades) {
   listaDeHabilidades = `<div id='poke-abilities-list'> ${listaDeHabilidades} </div>`
 
   habilidadesPokemon.innerHTML = titulo + listaDeHabilidades;
+}
+
+function validaErroPokemon(input) {
+  debugger;
+
+  const {value} = input;
+
+  if (value.match(/[0-9]/)) {
+    input.classList.add('erro');
+    return true;
+  
+  } else {
+    input.classList.remove('erro');
+    return false;
+  }
 }
 
 function limpar() {
