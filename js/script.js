@@ -17,14 +17,28 @@ function getPokemon (e) {
 
   if (validaErroPokemon(inputPokemon)) return;
 
-  $.getJSON(`https://pokeapi.co/api/v2/pokemon/${value}`, exibeInformacoesDoPokemon);
+  $.getJSON(`https://pokeapi.co/api/v2/pokemon/${value}`, function() {
+    console.log("success");
+  })
+    .done(function(data) {
+      exibeInformacoesDoPokemon(data);
+    })
+    .fail(function() {
+      limpar();
+      exibeErro();
+    })
 }
 
 function exibeInformacoesDoPokemon(data) {
-  nomePokemon.innerHTML = data.name;
-  imagemPokemon.src = data.sprites.front_shiny;    
+  if (data.name) {
+    nomePokemon.innerHTML = data.name;
+    imagemPokemon.src = data.sprites.front_shiny;    
 
-  exibeHabilidades(data.abilities);
+    exibeHabilidades(data.abilities);
+  } else {
+    limpar();
+    exibeErro();
+  }
 } 
 
 function exibeHabilidades(habilidades) {
@@ -47,6 +61,10 @@ function validaErroPokemon(input) {
     input.classList.remove('erro');
     return false;
   }
+}
+
+function exibeErro() {
+  nomePokemon.innerHTML = 'Pokémon inexistente';
 }
 
 function limpar() {
