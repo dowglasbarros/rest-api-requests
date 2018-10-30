@@ -14,6 +14,9 @@ function getPokemon (e) {
 }
 
 function exibeInformacoesDoPokemon(data) {
+  qs('#poke-name').innerHTML = data.name;
+  qs('#poke-picture img').src = data.sprites.front_shiny;    
+
   exibeHabilidades(data.abilities);
 } 
 
