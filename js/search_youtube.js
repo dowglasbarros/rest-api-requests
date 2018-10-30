@@ -6,7 +6,7 @@ const CALLBACK = "&callback=?"
 
 let videoId = "";
 
-document.querySelector("#btn-pokemon").addEventListener("click", function(event) {
+document.querySelector("#submit").addEventListener("click", function(event) {
 	let term = document.querySelector("#pokemon").value;
 	let URL = `${URL_BASE}&q=${term}`;
 	let listVideos = document.querySelector("#list-videos");
@@ -31,3 +31,12 @@ let videoPlaying = document.querySelector("#video-playing");
 $(".videos-pokemon").click(function(event){
 	console.log("teste: " + event.target.id);
 });
+
+
+document.getElementById("parent-list").addEventListener("click",function(e) {
+        // e.target is our targetted element.
+                    // try doing console.log(e.target.nodeName), it will result LI
+        if(e.target && e.target.nodeName == "LI") {
+            console.log(e.target.id + " was clicked");
+        }
+    });

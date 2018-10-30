@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Poke Pesquisa</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+	<header>
+		<h1> Pokeconsulta </h1>
+	</header>
+	<main>
+		<section class="search">
+			<div class="search-input">
+				<input id="pokemon" type="text" name="search" placeholder="Digite sua busca">
+			</div>
+			<div class="searchBtn">
+				<input type="submit" name="submit" value="Pesquisar" id="submit">
+				<input type="button" name="clear" value="Limpar" id="clear">
+			</div>
+		</section>
+		<section class="results">
+			<div class="results-left">
+				<div id="api-pokemon">
+					<div id="poke-name"></div>
+					<div id="poke-picture">
+						<img src="">
+					</div>
+					<div id="poke-abilities">
+						<h2>Habilidades</h2>
+						<div id="poke-abilities-list">
+							<!-- <p>lightning-rod</p>
+							<p>static</p> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="youtube-videos" class="results-right">
+				<div id="api-youtube">
+		        	<ul id="list-videos"></ul>
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/search_youtube.js"></script>
+</html>
