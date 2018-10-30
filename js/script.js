@@ -12,6 +12,7 @@ const YOUTUBE_API_KEY = "AIzaSyA23m5YJbOR0mNX2bpIXM5RxFEOgGgAYt0";
 const URL_YOUTUBE = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&type=video&key=${YOUTUBE_API_KEY}`;
 const CALLBACK = "&callback=?";
 let videoShowYoutube = qs("#video-show-youtube");
+let listVideos = qs("#list-videos");
 
 botaoSubmit.addEventListener('click', getPokemon);
 botaoLimpar.addEventListener('click', limpar);
@@ -93,6 +94,8 @@ function limpar() {
   nomePokemon.innerHTML = '';
   imagemPokemon.src = '';
   habilidadesPokemon.innerHTML = '';
+  listVideos.innerHTML = "";
+  videoShowYoutube.innerHTML = "";
 }
 
 function youtubeRequest(){
@@ -100,13 +103,13 @@ function youtubeRequest(){
   let term = input.value;
   if (validaErroPokemon(input)) return;
   let URL = `${URL_YOUTUBE}&q=${term}`;
-  qs("#list-videos").innerHTML = "";
-  let listVideos = qs("#list-videos");
   $.getJSON(URL, function(data){
+    let lis;
     data.items.forEach(item => {
-      listVideos.insertAdjacentHTML('beforeend', createVideoList(item));
+      lis += createVideoList(item);
     });
-    let li = qs("#list-videos").getElementsByTagName("li")[0];
+    listVideos.innerHTML = lis;
+    let li = listVideos.getElementsByTagName("li")[0];
     showVideo(li);
   });
 }
@@ -127,7 +130,6 @@ function showVideo(li){
   let description = li.querySelector(".video-description").textContent;
   const videoId = li.id;
   const url = `https://www.youtube.com/embed/${videoId}`;
-  let videoShowYoutube = qs("#video-show-youtube");
   videoShowYoutube.innerHTML = createYoutubeVideo(url, title, description);
 }
 
