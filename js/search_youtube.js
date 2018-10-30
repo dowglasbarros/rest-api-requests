@@ -8,6 +8,7 @@ let videoId = "";
 
 document.querySelector("#submit").addEventListener("click", function(event) {
 	let term = document.querySelector("#pokemon").value;
+	if (validaErroPokemon(term)) return;
 	let URL = `${URL_BASE}&q=${term}`;
 	document.querySelector("#list-videos").innerHTML = "";
 	let listVideos = document.querySelector("#list-videos");
