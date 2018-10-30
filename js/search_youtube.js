@@ -9,6 +9,7 @@ let videoId = "";
 document.querySelector("#submit").addEventListener("click", function(event) {
 	let term = document.querySelector("#pokemon").value;
 	let URL = `${URL_BASE}&q=${term}`;
+	document.querySelector("#list-videos").innerHTML = "";
 	let listVideos = document.querySelector("#list-videos");
 	$.getJSON(URL, function(data){
 		data.items.forEach(item => {
