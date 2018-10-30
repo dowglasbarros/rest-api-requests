@@ -13,20 +13,20 @@ botaoLimpar.addEventListener('click', limpar);
 
 function getPokemon (e) {
   e.preventDefault();
-  const {value} = inputPokemon;
 
-  if (validaErroPokemon(inputPokemon)) return;
-
-  $.getJSON(`https://pokeapi.co/api/v2/pokemon/${value}`, function() {
-    console.log("success");
-  })
-    .done(function(data) {
-      exibeInformacoesDoPokemon(data);
-    })
-    .fail(function() {
-      limpar();
-      exibeErro();
-    })
+  if (validaErroPokemon(inputPokemon)) {
+    exibeErro();
+  
+  } else {
+    $.getJSON(`https://pokeapi.co/api/v2/pokemon/${inputPokemon.value}`)
+      .done(function(data) {
+        exibeInformacoesDoPokemon(data);
+      })
+      .fail(function() {
+        limpar();
+        exibeErro();
+      })
+  }
 }
 
 function exibeInformacoesDoPokemon(data) {
