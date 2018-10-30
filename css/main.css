@@ -24,11 +24,13 @@ section.search{
 section.search .search-input{
 	width: 60%;
     margin: 40px auto 20px;
+
 }
 section.search .search-input input{
 	width: 100%;
     height: 40px;
     text-align: center;
+    font-size: 1.3rem;
 }
 section.search .searchBtn{
 	display: flex;
@@ -42,7 +44,7 @@ section.search .searchBtn input{
 }
 section.results{
 	display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 90%;
@@ -50,48 +52,38 @@ section.results{
 }
 section.results .results-left,
 section.results .results-right{
-	display: inline-flex;
-    width: 50%;
+	display: inline-flex;    
     justify-content: center;
     padding: 50px 0;
 }
-section.results .results-right{
-
+section.results .results-left{
+    flex-direction: column;
+    width: 60%;
 }
-
 #api-pokemon{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
-
 #poke-name{
     font-size: 1.8rem;
     font-weight: bold;
     color: #f9f90e;
-    text-shadow: 1px 0px 8px #4d66c0;
+    text-shadow: 0px 0px 3px #4d66c0;
     letter-spacing: .2rem;
     text-transform: capitalize;
 }
-#poke-picture{
-
-}
-#poke-abilities{
-
-}
-
 #poke-abilities h2{
     font-weight: bold;
     margin: 10px 0;
     color: #4d66c0;
+    text-align: center;
 }
-
 #poke-abilities p{
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
-    
+    margin-bottom: 5px;    
 }
 #poke-abilities p:before{
     content: "";
@@ -102,3 +94,33 @@ section.results .results-right{
     background-size: contain;
     margin-right: 10px;
 }
+section.results .results-right{
+    flex-direction: row;
+    width: 90%;
+    padding: 60px;
+}
+section.results .results-right li{
+    display: inline-flex;
+    flex-direction: column;
+    width: 32%;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+section.results .results-right li h2{
+    color: #4d66c0;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    min-height: 50px;
+}
+
+section.results .results-right li p{
+    width: 80%;
+    padding: 20px;
+    line-height: 1.4rem;
+    text-align: center;
+    height: 90px;
+    overflow: hidden;
+}
+
