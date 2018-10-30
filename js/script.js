@@ -104,7 +104,7 @@ function youtubeRequest(){
   if (validaErroPokemon(input)) return;
   let URL = `${URL_YOUTUBE}&q=${term}`;
   $.getJSON(URL, function(data){
-    let lis;
+    let lis = "";
     data.items.forEach(item => {
       lis += createVideoList(item);
     });
