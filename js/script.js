@@ -60,6 +60,9 @@ function pokemonCry(name) {
   } else if (name === 'charmander') {
     var audio = new Audio('cries/charmander.wav');
     audio.play();
+  } else if (name === 'squirtle') {
+    var audio = new Audio('cries/squirtle.wav');
+    audio.play();
   }
 }
 
